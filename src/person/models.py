@@ -32,7 +32,7 @@ class Person(AbstractBaseUser, PermissionsMixin):
     phone_number = models.CharField(max_length=255)
     role = models.IntegerField(choices=PersonRole, default=PersonRole.customer)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     USERNAME_FIELD = "email"
