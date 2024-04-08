@@ -7,7 +7,7 @@ from person import permissions, services
 class ListCreatePersonView(APIView):
 
     def get(self, request: Request) -> Response:
-        permissions.is_authenticated(request, self)
+        permissions.is_admin(request, self)
         people = services.get_all()
         return Response(people)
 
