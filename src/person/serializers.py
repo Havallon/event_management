@@ -33,3 +33,9 @@ class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
         fields = ['id', 'email', 'document', 'phone_number', 'role', 'is_active', 'created_at']
+
+
+class PersonUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Person
+        fields = ['name', 'phone_number']

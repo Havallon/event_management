@@ -1,9 +1,18 @@
 from rest_framework import status
+from rest_framework.permissions import BasePermission
 from person.choices import PersonRole
 
 
+class AdminPermission(BasePermission):
+
+    def has_permission(self, request, view):
+        has_permission = bool(request.user and request.user.is_authenticated and request.user.role == PersonRole.admin)
+        return has_permission
+
+
 def is_admin(request, view):
-    has_permission = request.user and request.user.is_authenticated and request.user.role == PersonRole.admin
+    permission = AdminPermission()
+    has_permission = permission.has_permission(request, view)
     if not has_permission:
         view.permission_denied(
             request,
