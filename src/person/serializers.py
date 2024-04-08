@@ -15,7 +15,7 @@ class CreatePersonSerializer(serializers.Serializer):
         if Person.objects.filter(email=value).exists():
             raise serializers.ValidationError('This email has been used')
         return value
-    
+
     def validate_document(self, value):
         if Person.objects.filter(document=value).exists():
             raise serializers.ValidationError('This document has been used')

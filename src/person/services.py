@@ -8,6 +8,7 @@ def get_all() -> list:
     serializer = PersonSerializer(queryset, many=True)
     return serializer.data
 
+
 def create_person(request: Request) -> dict:
     validate_serializer = CreatePersonSerializer(data=request.data)
     validate_serializer.is_valid(raise_exception=True)
