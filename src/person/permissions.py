@@ -19,3 +19,10 @@ def is_admin(request, view):
             message='You do not have permission to perform this action.',
             code=status.HTTP_403_FORBIDDEN
         )
+
+
+class ProducerPermission(BasePermission):
+
+    def has_permission(self, request, view):
+        has_permission = bool(request.user and request.user.is_authenticated and request.user.role == PersonRole.producer)
+        return has_permission

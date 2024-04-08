@@ -7,9 +7,13 @@ from person.models import Person
 
 class Event(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    banner = models.FileField()
     producer = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='events')
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def file_path(instance, filename):
+        return f'media/events/{instance.id}/{filename}'
+
+    banner = models.ImageField(upload_to=file_path)
 
 
 class Section(models.Model):
