@@ -1,1 +1,2 @@
 from event.views.event import ListCreateEventView, RetrieveUpdateDestroyEventView
+from event.views.section import ListCreateSectionhView, RetrieveUpdateDestroySectionView
